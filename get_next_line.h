@@ -6,7 +6,7 @@
 /*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 20:06:28 by tbousque          #+#    #+#             */
-/*   Updated: 2021/12/02 14:52:42 by tbousque         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:03:56 by tbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
-# define BUFFER_SIZE 32
+//# define BUFFER_SIZE 32
 
 typedef struct s_list
 {
