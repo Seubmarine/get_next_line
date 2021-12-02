@@ -6,71 +6,12 @@
 /*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 00:31:10 by tbousque          #+#    #+#             */
-/*   Updated: 2021/12/02 03:58:55 by tbousque         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:24:41 by tbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
-{
-	const char	*s_ptr;
-
-	s_ptr = s;
-	while (*s++)
-		;
-	return ((size_t)(s - s_ptr - 1));
-}
-char	*ft_strdup(const char *s)
-{
-	size_t	len;
-	char	*dup;
-	size_t	i;
-
-	len = ft_strlen(s);
-	dup = malloc(len + 1);
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while(s[i])
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	i;
-	size_t	s1len;
-	size_t	s2len;
-	char	*str;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	str = malloc(sizeof(char) * (s1len + s2len + 1));
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (i < s1len)
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (i - s1len < s2len)
-	{
-		str[i] = s2[i - s1len];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-#include <string.h>
 char	*verify_new_line(char **p_buf)
 {
 	char	*newline_location;
@@ -79,7 +20,7 @@ char	*verify_new_line(char **p_buf)
 	char	*new_buf;
 
 	buf = *p_buf;
-	newline_location = strchr(buf, '\n');
+	newline_location = ft_strchr(buf, '\n');
 	if (newline_location)
 	{
 		new_buf = ft_strdup(newline_location + 1);
@@ -121,7 +62,7 @@ char	*get_next_line(int fd)
 		readed = ft_strjoin(saved_buf[fd], buf);
 		free(saved_buf[fd]);
 		saved_buf[fd] = readed;
-		if (strchr(buf, '\n'))
+		if (ft_strchr(buf, '\n'))
 		{
 			readed = verify_new_line(&saved_buf[fd]);
 			return (readed);
@@ -130,25 +71,38 @@ char	*get_next_line(int fd)
 }
 
 #include <stdio.h>
-#include <fcntl.h>
-int main(void)
+void read_n_line(int fd, int n_line)
 {
-	char *str;
+	char	*str;
+	int i;
 
-	int fd1 = open("test.txt", O_RDONLY);
-	int i = 0;
-
-	while (i < 6)
+	i = 0;
+	while (i < n_line)
 	{
-		str = get_next_line(fd1);
+		str = get_next_line(fd);
 		if (str)
 			printf("%s", str);
 		free(str);
 		i++;
 	}
-	//int fd2 = open("get_next_line.c", O_RDONLY);
-	//str = get_next_line(fd2);
-	//printf("%s", str);
-	//free (str);
+}
+
+#include <fcntl.h>
+int main(int argc, char **argv)
+{
+	if (argc != 2)
+		return(printf("CRASH\n"));
+	printf("path is : %s", argv[1]);
+	int fd1 = open("test.txt", O_RDONLY);
+	int fd2 = open("get_next_line.c", O_RDONLY);
+	int fd3 = open(argv[1], O_RDONLY);
+	read_n_line(fd2, 15);
+	read_n_line(fd1, 1);
+	read_n_line(fd2, 200);
+	read_n_line(fd1, 1);
+	read_n_line(fd1, 1);
+	read_n_line(fd3, 1000);
+	read_n_line(fd2, 200);
+
 	return (0);
 }
