@@ -6,7 +6,7 @@
 /*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 14:49:47 by tbousque          #+#    #+#             */
-/*   Updated: 2021/12/02 14:51:29 by tbousque         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:46:16 by tbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strdup(const char *s)
 	if (dup == NULL)
 		return (NULL);
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		dup[i] = s[i];
 		i++;

@@ -6,7 +6,7 @@
 /*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 00:31:10 by tbousque          #+#    #+#             */
-/*   Updated: 2022/01/10 16:32:38 by tbousque         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:52:16 by tbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*verify_new_line(char **p_buf)
 		free(buf);
 		buf = new_buf;
 		*p_buf = buf;
-		return(readed);
+		return (readed);
 	}
 	return (NULL);
 }
@@ -37,11 +37,10 @@ char	*verify_new_line(char **p_buf)
 char	*get_next_line(int fd)
 {
 	static char	*saved_buf[20000];
-	//static char	*saved_buf[fd] = NULL;
 	char		*buf;
 	ssize_t		n_read;
 	char		*readed;
-	
+
 	if (!saved_buf[fd])
 		saved_buf[fd] = ft_strdup("");
 	readed = verify_new_line(&saved_buf[fd]);
@@ -71,21 +70,5 @@ char	*get_next_line(int fd)
 			free(buf);
 			return (readed);
 		}
-	}
-}
-
-void read_n_line(int fd, int n_line)
-{
-	char	*str;
-	int i;
-
-	i = 0;
-	while (i < n_line)
-	{
-		str = get_next_line(fd);
-		if (str)
-			write(1, str, ft_strlen(str));
-		free(str);
-		i++;
 	}
 }

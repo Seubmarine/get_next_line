@@ -6,7 +6,7 @@
 /*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 20:06:28 by tbousque          #+#    #+#             */
-/*   Updated: 2022/01/10 16:36:05 by tbousque         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:44:20 by tbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
-
-typedef struct s_list
-{
-	void		*content;
-	struct s_list	*next;
-}	t_list;
-
-typedef struct s_line
-{
-	int	fd;
-	char	*data;
-}	t_line;
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);

@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/10 16:50:18 by tbousque          #+#    #+#             */
+/*   Updated: 2022/01/10 16:52:58 by tbousque         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fcntl.h>
 #include <stdio.h>
 #include "get_next_line.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	char *line;
-	int fd;
+	char	*line;
+	int		fd;
+
 	if (argc != 2)
 	{
 		printf("Please provide a file path when running");
@@ -16,12 +29,31 @@ int main(int argc, char **argv)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		printf("%s", line);
 		free(line);
 	}
 	close(fd);
+	return (0);
 }
+
+/*
+void	read_n_line(int fd, int n_line)
+{
+	char	*str;
+	int	i;
+
+	i = 0;
+	while (i < n_line)
+	{
+		str = get_next_line(fd);
+		if (str)
+			write(1, str, ft_strlen(str));
+		free(str);
+		i++;
+	}
+}
+*/
 /*
 int main(int argc, char **argv)
 {
