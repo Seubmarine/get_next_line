@@ -6,7 +6,7 @@
 /*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 00:31:10 by tbousque          #+#    #+#             */
-/*   Updated: 2021/12/02 19:14:17 by tbousque         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:32:38 by tbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	*verify_new_line(char **p_buf)
 	return (NULL);
 }
 
-#include <stdio.h>
 char	*get_next_line(int fd)
 {
 	static char	*saved_buf[20000];
@@ -75,7 +74,6 @@ char	*get_next_line(int fd)
 	}
 }
 
-#include <stdio.h>
 void read_n_line(int fd, int n_line)
 {
 	char	*str;
@@ -91,32 +89,3 @@ void read_n_line(int fd, int n_line)
 		i++;
 	}
 }
-
-#include <fcntl.h>
-// int main(int argc, char **argv)
-// {
-// 	char *line;
-// 	int fd;
-// 	while (1)
-// 	{
-// 		fd = open("test.txt", O_RDONLY);
-// 		line = get_next_line(-1);
-//     	printf("%s", line);
-// 		free(line);
-// 		// close(fd);
-// 	}
-// }
-// int main(int argc, char **argv)
-// {
-// 	if (argc != 2)
-// 		return(printf("CRASH\n"));
-// 	printf("path is : %s", argv[1]);
-// 	int fd1 = open("test.txt", O_RDONLY);
-// 	int fd2 = open("get_next_line.c", O_RDONLY);
-// 	int fd3 = open(argv[1], O_RDONLY);
-// 	read_n_line(fd1, 1);
-// 	read_n_line(fd2, 5);
-// 	read_n_line(fd1, 1);
-// 	read_n_line(fd1, 1);
-// 	return (0);
-// }
