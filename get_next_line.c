@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbousque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbousque <tbousque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:09:12 by tbousque          #+#    #+#             */
-/*   Updated: 2022/01/17 22:09:19 by tbousque         ###   ########.fr       */
+/*   Updated: 2022/01/17 22:21:09 by tbousque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*verify_new_line(char **p_buf)
 {
